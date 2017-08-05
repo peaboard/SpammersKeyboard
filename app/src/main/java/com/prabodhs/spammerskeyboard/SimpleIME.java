@@ -100,19 +100,10 @@ public class SimpleIME extends InputMethodService
             case 193:
 
                 for(int l=0; l<=25; l++){
-                    SystemClock.sleep(10);
-                    getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
-                    getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
-                    SystemClock.sleep(10);
-                    //getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
                     ic.sendKeyEvent(new KeyEvent(0,0,KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_V,0,KeyEvent.META_CTRL_ON));
+                    SystemClock.sleep(10);
                     keyDownUp(KeyEvent.KEYCODE_ENTER);
                     SystemClock.sleep(500);
-                    getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
-                    getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
-                    getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
-                    keyDownUp(KeyEvent.KEYCODE_ENTER);
-                    SystemClock.sleep(10);
                 }
 
                 break;
