@@ -92,46 +92,12 @@ public class SimpleIME extends InputMethodService
                 break;
             case 192:
 
-//                for(int l=0; l<=25; l++){
-//                    ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-//                }
-
-                //ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, 113));
-
-                //int key = KeyEvent.KEYCODE_CTRL_LEFT;
-                //int meta = KeyEvent.META_CTRL_ON | KeyEvent.META_CTRL_LEFT_ON;
-
-                //ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, -113));
-                //ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, 113));
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_V));
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_V));
-
-                ic.sendKeyEvent(new KeyEvent(0,0,KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_V,0,KeyEvent.META_CTRL_ON)) ;
-
-                //sendKeyDown(ic, key, meta);
-
-                //keyDownUp(KeyEvent.KEYCODE_V);
-
-                //sendKeyUp(ic, key, meta);
-
-                //ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.META_CTRL_ON));
-
-
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
+                for(int l=0; l<=25; l++){
+                    ic.sendKeyEvent(new KeyEvent(0,0,KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_V,0,KeyEvent.META_CTRL_ON)) ;
+                }
                 break;
+
             case 193:
-
-                //SystemClock.sleep(1000);
-
-                //SystemClock.sleep(1000);
-
-                //SystemClock.sleep(500);
-                //keyDownUp(KeyEvent.KEYCODE_ENTER);
-                //SystemClock.sleep(1000);
-
 
                 for(int l=0; l<=25; l++){
                     SystemClock.sleep(10);
@@ -149,53 +115,6 @@ public class SimpleIME extends InputMethodService
                     SystemClock.sleep(10);
                 }
 
-
-
-//                getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-////                SystemClock.sleep(500);
-//                keyDownUp(KeyEvent.KEYCODE_ENTER);
-//                getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-////                SystemClock.sleep(500);
-//                keyDownUp(KeyEvent.KEYCODE_ENTER);
-//                getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-////                SystemClock.sleep(500);
-//                keyDownUp(KeyEvent.KEYCODE_ENTER);
-//                getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-////                SystemClock.sleep(500);
-//                keyDownUp(KeyEvent.KEYCODE_ENTER);
-//                getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-////                SystemClock.sleep(500);
-//                keyDownUp(KeyEvent.KEYCODE_ENTER);
-//                getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-////                SystemClock.sleep(500);
-//                keyDownUp(KeyEvent.KEYCODE_ENTER);
-//                getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-////                SystemClock.sleep(500);
-//                keyDownUp(KeyEvent.KEYCODE_ENTER);
-//                getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-////                SystemClock.sleep(500);
-//                keyDownUp(KeyEvent.KEYCODE_ENTER);
-//                InputConnection bc = getCurrentInputConnection();
-//                keyDownUp(KeyEvent.KEYCODE_ENTER);
-////                keyDownUp(KeyEvent.KEYCODE_ENTER);
-//                getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
-//                keyDownUp(KeyEvent.KEYCODE_ENTER);
-                //SystemClock.sleep(500);
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, (KeyEvent.KEYCODE_ENTER)));
-//                editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
-
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
-//
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
-//
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
-//
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-//                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
-
                 break;
             case 194:
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
@@ -212,11 +131,6 @@ public class SimpleIME extends InputMethodService
                 break;
             default:
                 break;
-//                char code = (char)primaryCode;
-//                if(Character.isLetter(code) && caps){
-//                    code = Character.toUpperCase(code);
-//                }
-//                ic.commitText(String.valueOf(code),1);
         }
     }
 
