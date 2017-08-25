@@ -5,12 +5,31 @@
     android:keyHeight="60dp"
 >
 
-    <Row>
+    <!-- Added to give a proper padding to the keys -->
+    <!--Need a more elegant method-->
+    <Row android:horizontalGap="0%p" android:keyHeight="0.1%p">
+        <Key android:codes="32" android:keyLabel=""
+            android:keyWidth="100%p"
+            />
+
+    </Row>
+
+    <Row android:rowEdgeFlags="top|bottom">
         <!--<Key android:codes="-1" android:keyLabel="CAPS" android:keyEdgeFlags="left"/>-->
-        <Key android:codes="-5" android:keyLabel="DEL" android:keyEdgeFlags="left" android:keyWidth="20%p" android:isRepeatable="true"/>
-        <Key android:codes="192" android:keyLabel="Copyx25"/>
-        <Key android:codes="193" android:keyLabel="NewCopyx25\n"/>
+        <Key android:codes="32" android:keyLabel="" android:keyWidth="0.01%p" android:keyEdgeFlags="left" />
+        <Key android:codes="-5" android:keyLabel="DEL"  android:keyWidth="20%p" android:isRepeatable="true"  />
+        <Key android:codes="192" android:keyLabel="Copyx25" android:keyWidth="39.99%p"/>
+        <Key android:codes="193" android:keyLabel="NewCopyx25\n"  android:keyWidth="39.99%p"/>/>
+        <Key android:codes="32" android:keyLabel="" android:keyWidth="0.01%p" android:keyEdgeFlags="right" />
         <!--<Key android:codes="195" android:keyLabel="DONE" android:keyWidth="20%p" android:keyEdgeFlags="right"/>-->
+    </Row>
+
+    <!-- Added to give a proper padding to the keys -->
+    <Row android:horizontalGap="0%p" android:keyHeight="0.1%p">
+        <Key android:codes="32" android:keyLabel=""
+            android:keyWidth="100%p"
+            />
+
     </Row>
 
 </Keyboard>

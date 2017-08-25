@@ -40,6 +40,7 @@ public class SimpleIME extends InputMethodService
         EditText editText = new EditText(this);
         kv.setKeyboard(keyboard);
         kv.setOnKeyboardActionListener(this);
+        //kv.setPreviewEnabled(false);
         return kv;
     }
 
@@ -100,10 +101,12 @@ public class SimpleIME extends InputMethodService
             case 193:
 
                 for(int l=0; l<=25; l++){
+                    getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+                    getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
                     ic.sendKeyEvent(new KeyEvent(0,0,KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_V,0,KeyEvent.META_CTRL_ON));
                     SystemClock.sleep(10);
                     keyDownUp(KeyEvent.KEYCODE_ENTER);
-                    SystemClock.sleep(500);
+                    SystemClock.sleep(200);
                 }
 
                 break;
