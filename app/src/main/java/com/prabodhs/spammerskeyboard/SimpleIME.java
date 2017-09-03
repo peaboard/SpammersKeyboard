@@ -2,12 +2,14 @@ package com.prabodhs.spammerskeyboard;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.media.AudioManager;
 import android.os.IBinder;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -21,10 +23,14 @@ public class SimpleIME extends InputMethodService
     private Keyboard keyboard;
     private EditText editText;
 
+    // Private declaration for function-wide declarations
+    private Boolean motoExp;
+    private Boolean otherExp;
+    SharedPreferences sharedPref;
+
     //private ModifierKeyState mCtrlKeyState = new ModifierKeyState();
 
     private boolean caps = false;
-
 
     private void sendKeyDown(InputConnection ic, int key, int meta) {
         long now = System.currentTimeMillis();
@@ -33,8 +39,15 @@ public class SimpleIME extends InputMethodService
     }
 
 
+
+
     @Override
     public View onCreateInputView() {
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        motoExp = sharedPref.getBoolean("moto_exp", false);
+        otherExp = sharedPref.getBoolean("other_exp", false);
+
         kv = (KeyboardView)getLayoutInflater().inflate(R.layout.keyboard, null);
         keyboard = new Keyboard(this, R.xml.qwerty);
         EditText editText = new EditText(this);
@@ -76,6 +89,15 @@ public class SimpleIME extends InputMethodService
 
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
+
+
+
+//        motoExp = true;
+//        otherExp = false;
+
+        /* For Debugging */
+        //Log.d("STATE", String.valueOf(motoExp));
+
         InputConnection ic = getCurrentInputConnection();
         InputConnection mc = getCurrentInputConnection();
         //playClick(primaryCode);
@@ -100,14 +122,58 @@ public class SimpleIME extends InputMethodService
 
             case 193:
 
-                for(int l=0; l<=25; l++){
-                    getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
-                    getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
-                    ic.sendKeyEvent(new KeyEvent(0,0,KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_V,0,KeyEvent.META_CTRL_ON));
-                    SystemClock.sleep(10);
-                    keyDownUp(KeyEvent.KEYCODE_ENTER);
-                    SystemClock.sleep(200);
+                // Will have to change this such that only one flag can be active at a given time
+                if(otherExp)
+                {
+                    for(int l=0; l<=25; l++){
+                        SystemClock.sleep(10);
+                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                        SystemClock.sleep(10);
+                        //getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
+                        ic.sendKeyEvent(new KeyEvent(0,0,KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_V,0,KeyEvent.META_CTRL_ON));
+                        SystemClock.sleep(10);
+                        keyDownUp(KeyEvent.KEYCODE_ENTER);
+                        SystemClock.sleep(500);
+                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
+                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
+                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
+                        keyDownUp(KeyEvent.KEYCODE_ENTER);
+                        SystemClock.sleep(10);
+                    }
                 }
+                else if (motoExp)
+                {
+                    for(int l=0; l<=25; l++){
+                        SystemClock.sleep(10);
+                        mc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+                        SystemClock.sleep(100);
+                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                        SystemClock.sleep(100);
+                        //getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
+                        ic.sendKeyEvent(new KeyEvent(0,0,KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_V,0,KeyEvent.META_CTRL_ON));
+                        SystemClock.sleep(100);
+                        keyDownUp(KeyEvent.KEYCODE_ENTER);
+                        SystemClock.sleep(200);
+                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
+                        keyDownUp(KeyEvent.KEYCODE_ENTER);
+                        SystemClock.sleep(10);
+                    }
+                }
+                else
+                {
+                    for(int l=0; l<=25; l++){
+                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                        ic.sendKeyEvent(new KeyEvent(0,0,KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_V,0,KeyEvent.META_CTRL_ON));
+                        SystemClock.sleep(10);
+                        keyDownUp(KeyEvent.KEYCODE_ENTER);
+                        SystemClock.sleep(200);
+                    }
+                }
+
+
+
 
                 break;
             case 194:
