@@ -24,6 +24,12 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".ImePreferences" android:label="@string/settings_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

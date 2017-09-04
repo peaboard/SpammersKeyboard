@@ -10,18 +10,19 @@ import android.media.AudioManager;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
-import android.widget.EditText;
+//import android.widget.EditText;
 
 public class SimpleIME extends InputMethodService
         implements KeyboardView.OnKeyboardActionListener {
 
     private KeyboardView kv;
     private Keyboard keyboard;
-    private EditText editText;
+//    private EditText editText;
 
     // Private declaration for function-wide declarations
     private Boolean motoExp;
@@ -45,12 +46,10 @@ public class SimpleIME extends InputMethodService
     public View onCreateInputView() {
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        motoExp = sharedPref.getBoolean("moto_exp", false);
-        otherExp = sharedPref.getBoolean("other_exp", false);
 
         kv = (KeyboardView)getLayoutInflater().inflate(R.layout.keyboard, null);
         keyboard = new Keyboard(this, R.xml.qwerty);
-        EditText editText = new EditText(this);
+//        EditText editText = new EditText(this);
         kv.setKeyboard(keyboard);
         kv.setOnKeyboardActionListener(this);
         //kv.setPreviewEnabled(false);
@@ -89,6 +88,10 @@ public class SimpleIME extends InputMethodService
 
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
+
+        // Cheap way to avoid preferences listner
+        motoExp = sharedPref.getBoolean("moto_exp", false);
+        otherExp = sharedPref.getBoolean("other_exp", false);
 
 
 
@@ -144,21 +147,54 @@ public class SimpleIME extends InputMethodService
                 }
                 else if (motoExp)
                 {
+
+//                    mc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+//                    SystemClock.sleep(100);
+//                    getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+//                    SystemClock.sleep(100);
+//                    //getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
+//                    mc.sendKeyEvent(new KeyEvent(0,0,KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_V,0,KeyEvent.META_CTRL_ON));
+//                    SystemClock.sleep(100);
+//                    keyDownUp(KeyEvent.KEYCODE_ENTER);
+//                    SystemClock.sleep(200);
+//                    getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
+//                    keyDownUp(KeyEvent.KEYCODE_ENTER);
+//                    SystemClock.sleep(10);
+//
+//                    mc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+//                    SystemClock.sleep(100);
+//                    mc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+//                    mc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+//                    SystemClock.sleep(100);
+//                    mc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+//                    SystemClock.sleep(100);
+//                    mc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+//                    SystemClock.sleep(100);
+//                    mc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+//                    SystemClock.sleep(100);
+//
+//                    Log.d("Initial setup", "DONE");
+
+                    InputConnection bc = getCurrentInputConnection();
+
                     for(int l=0; l<=25; l++){
-                        SystemClock.sleep(10);
-                        mc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
+//                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
+//                        SystemClock.sleep(200);
+                        bc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_E));
                         SystemClock.sleep(100);
-                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                        bc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                        bc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
                         SystemClock.sleep(100);
                         //getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PASTE));
-                        ic.sendKeyEvent(new KeyEvent(0,0,KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_V,0,KeyEvent.META_CTRL_ON));
+                        bc.sendKeyEvent(new KeyEvent(0,0,KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_V,0,KeyEvent.META_CTRL_ON));
                         SystemClock.sleep(100);
                         keyDownUp(KeyEvent.KEYCODE_ENTER);
                         SystemClock.sleep(200);
-                        getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
+                        bc.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_TAB));
                         keyDownUp(KeyEvent.KEYCODE_ENTER);
                         SystemClock.sleep(10);
                     }
+                    Log.d("Complete", "DONE");
                 }
                 else
                 {
@@ -184,10 +220,10 @@ public class SimpleIME extends InputMethodService
                 break;
             case 197:
                 keyDownUp(KeyEvent.KEYCODE_ENTER);
-                editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
+//                editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
                 break;
             case 196:
-                editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
+//                editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
                 break;
             default:
                 break;
