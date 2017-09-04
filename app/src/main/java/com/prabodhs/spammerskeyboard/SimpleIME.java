@@ -39,7 +39,11 @@ public class SimpleIME extends InputMethodService
                 now, now, KeyEvent.ACTION_DOWN, key, 0, meta));
     }
 
-
+    /* Prevent Fullscreen in Landscape Mode */
+    @Override
+    public boolean onEvaluateFullscreenMode() {
+        return false;
+    }
 
 
     @Override
