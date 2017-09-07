@@ -18,7 +18,7 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">SpammersKeyboard</string>
+    <string name="app_name">Spammers Keyboard</string>
     <string name="simple_ime">Spammers Keyboard</string>
     <string name="subtype_en_US">English (US)</string>
 
