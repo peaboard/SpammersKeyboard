@@ -94,13 +94,15 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="356dp"
-        android:layout_height="97dp"
-        android:text="Copy whatever text you want to spam your unfortunate recipient with. \nThe PASTE button pastes your copied text 25 times. NewLinePASTE pastes the text on a new line 25 times. With Experimental Settings enabled, NewLinePASTE sends a new message on WhatsApp 25 times. "
+        android:layout_width="354dp"
+        android:layout_height="121dp"
+        android:text="Copy whatever text you want to spam your unfortunate recipient with. \nThe PASTE button pastes your copied text 25 times. NewLinePASTE pastes the text on a new line 25 times. With Experimental Settings enabled, NewLinePASTE sends a new message of your copied text on WhatsApp 25 times. "
+        app:layout_constraintBottom_toTopOf="@+id/KeyboardSettings"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/KeyboardSettings"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintVertical_bias="0.792"
+        app:layout_constraintHorizontal_bias="0.555"
+        tools:layout_editor_absoluteX="22dp" />
 
 </android.support.constraint.ConstraintLayout>
